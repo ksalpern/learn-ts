@@ -1,16 +1,16 @@
 "use strict";
-class Animal {
-    constructor(name) {
-        this.name = name;
+class Queue {
+    constructor() {
+        this.data = [];
     }
-    move(distance = 0) {
-        console.log(`${this.name} moved ${distance}m.`);
+    push(item) {
+        this.data.push(item);
     }
-}
-let cat = new Animal("Cat");
-cat.move(10);
-class Bird extends Animal {
-    fly(distance = 0) {
-        console.log(`${this.name} fly ${distance}m.`);
+    pop() {
+        return this.data.shift();
     }
 }
+const queue = new Queue();
+queue.push(3);
+queue.push(2); // Error: Argument of type '"2"' is not assignable to parameter of type 'number'.
+console.log(queue.pop().toPrecision(1)); // OK

@@ -1,18 +1,14 @@
-class Animal {
-  protected name: string;
-  constructor(name: string) {
-    this.name = name;
+class Queue<T> {
+  data = [];
+  push(item: T) {
+    this.data.push(item);
   }
-  public move(distance: number = 0): void {
-    console.log(`${this.name} moved ${distance}m.`);
+  pop(): T {
+   return this.data.shift();
   }
 }
 
-let cat = new Animal("Cat");
-cat.move(10);
-
-class Bird extends Animal {
-  fly(distance: number = 0): void {
-    console.log(`${this.name} fly ${distance}m.`);
-  }
-}
+const queue = new Queue<number>();
+queue.push(3);
+queue.push(2); // Error: Argument of type '"2"' is not assignable to parameter of type 'number'.
+console.log(queue.pop().toPrecision(1)); // OK
