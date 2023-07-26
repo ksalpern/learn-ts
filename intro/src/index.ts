@@ -1,14 +1,27 @@
-class Queue<T> {
-  data = [];
-  push(item: T) {
-    this.data.push(item);
-  }
-  pop(): T {
-   return this.data.shift();
-  }
-}
+let exampleAny:any;
+let exampleUnknown:unknown;
 
-const queue = new Queue<number>();
-queue.push(3);
-queue.push(2); // Error: Argument of type '"2"' is not assignable to parameter of type 'number'.
-console.log(queue.pop().toPrecision(1)); // OK
+// any
+exampleAny = 10;
+exampleAny = true;
+exampleAny = 'Hello';
+
+// unknown
+exampleUnknown = 10;
+exampleUnknown = true;
+exampleUnknown = 'Hello';
+
+// any
+exampleAny.allows.anything.you.can.imagine();
+let anySetBool: boolean = exampleAny;
+
+// unknown
+if (typeof exampleUnknown === 'boolean') {
+    let unknownSetBool: boolean = exampleUnknown;
+}
+if (typeof exampleUnknown === 'string') {
+    let unknownSetString: string = exampleUnknown;
+}
+if (typeof exampleUnknown === 'number') {
+    let unknownSetNumber: number = exampleUnknown;
+}
