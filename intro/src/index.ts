@@ -1,27 +1,16 @@
-let exampleAny:any;
-let exampleUnknown:unknown;
-
-// any
-exampleAny = 10;
-exampleAny = true;
-exampleAny = 'Hello';
-
-// unknown
-exampleUnknown = 10;
-exampleUnknown = true;
-exampleUnknown = 'Hello';
-
-// any
-exampleAny.allows.anything.you.can.imagine();
-let anySetBool: boolean = exampleAny;
-
-// unknown
-if (typeof exampleUnknown === 'boolean') {
-    let unknownSetBool: boolean = exampleUnknown;
+class Person {
+    private _age: number;
+    constructor(_age: number) {
+        this._age = _age;
+    }
+    growOlder() {
+        this._age++;
+    }
+    age() {
+        return this._age;
+    }
 }
-if (typeof exampleUnknown === 'string') {
-    let unknownSetString: string = exampleUnknown;
-}
-if (typeof exampleUnknown === 'number') {
-    let unknownSetNumber: number = exampleUnknown;
-}
+
+const person = new Person(1);
+person.growOlder();
+console.log(person.age()); // 2

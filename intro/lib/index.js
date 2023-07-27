@@ -1,24 +1,15 @@
 "use strict";
-let exampleAny;
-let exampleUnknown;
-// any
-exampleAny = 10;
-exampleAny = true;
-exampleAny = 'Hello';
-// unknown
-exampleUnknown = 10;
-exampleUnknown = true;
-exampleUnknown = 'Hello';
-// any
-exampleAny.allows.anything.you.can.imagine();
-let anySetBool = exampleAny;
-// unknown
-if (typeof exampleUnknown === 'boolean') {
-    let unknownSetBool = exampleUnknown;
+class Person {
+    constructor(_age) {
+        this._age = _age;
+    }
+    growOlder() {
+        this._age++;
+    }
+    age() {
+        return this._age;
+    }
 }
-if (typeof exampleUnknown === 'string') {
-    let unknownSetString = exampleUnknown;
-}
-if (typeof exampleUnknown === 'number') {
-    let unknownSetNumber = exampleUnknown;
-}
+const person = new Person(1);
+person.growOlder();
+console.log(person.age()); // 2
