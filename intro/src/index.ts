@@ -1,22 +1,16 @@
-type Square = {
-    size: number;
+type Person = {
+  name: string;
+  email?: string | null | undefined;
+};
+
+function sendEmail(email: string): void {
+  console.log(`send email to ${email}!`);
 }
 
-type Rectangle = {
-    width: number;
-    height: number;
+function contact(person: Person): void {
+  console.log(`contact ${person.name} at ${person.email}`);
+  if (person.email === null || person.email === undefined) {
+    throw new Error("Email is missing!");
+  }
+  sendEmail(person.email);
 }
-
-type Shape = Square | Rectangle;
-
-function area(shape: Shape) {
-   if('size' in shape) {
-       return shape.size * shape.size;
-   }
-   if('width' in shape) {
-       return shape.width * shape.height;
-   }
-}
-
-area({ size: 10 });
-area({ width: 10, height: 10 });
