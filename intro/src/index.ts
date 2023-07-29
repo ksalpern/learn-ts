@@ -1,16 +1,22 @@
-class Person {
-    private _age: number;
-    constructor(_age: number) {
-        this._age = _age;
-    }
-    growOlder() {
-        this._age++;
-    }
-    age() {
-        return this._age;
-    }
+type Square = {
+    size: number;
 }
 
-const person = new Person(1);
-person.growOlder();
-console.log(person.age()); // 2
+type Rectangle = {
+    width: number;
+    height: number;
+}
+
+type Shape = Square | Rectangle;
+
+function area(shape: Shape) {
+   if('size' in shape) {
+       return shape.size * shape.size;
+   }
+   if('width' in shape) {
+       return shape.width * shape.height;
+   }
+}
+
+area({ size: 10 });
+area({ width: 10, height: 10 });
