@@ -1,19 +1,10 @@
-let suffix: string | null = getSuffix();
-if (suffix !== null) {
-  const suffixLocal = suffix;
-  let exampleOne: string = `Hello, ${suffixLocal.toLocaleLowerCase()}!`;
-  ["jane", "mark", "paul"].forEach((name) => {
-    let exampleTwo: string = `Hello, ${name} ${suffixLocal}!`;
-    console.log(exampleTwo);
-  });
+export class State<T> {
+  constructor(public current: T) {}
+  update(next: Partial<T>) {
+    this.current = { ...this.current, ...next };  
+  }
 }
 
-let example: string | null = forExample();
-if (example !== null) {
-  const exampleLocal = example;
-  setTimeout(() => {
-    console.log(exampleLocal.toLocaleLowerCase());
-  }, 1000);
-}
-
-example = null;
+const state = new State({x: 0, y: 0});
+state.update({x: 1, y: 2});
+console.log(state.current)
